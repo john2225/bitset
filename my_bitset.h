@@ -18,6 +18,21 @@ public:
     BitSet& set();
     BitSet& set(std::size_t position, bool value = true);
     BitSet& reset();
+    BitSet<N>& operator&=(const BitSet<N>& rhs)
+    {
+        for(int i = 0; i < sizeOfBits; ++i)
+        {
+            this->bits[i] &= rhs.bits[i];
+        }
+    }
+    BitSet<N>& operator|=(const BitSet<N>& rhs)
+    {
+        for(int i = 0; i < sizeOfBits; ++i)
+        {
+            this->bits[i] |= rhs.bits[i];
+        }
+    }
+
     bool operator[](std::size_t position);
     bool all();
     bool any();
